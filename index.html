@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Socket.io Example</title>
+</head>
+<body>
+  <h1>Socket.io Example</h1>
+  <div id="encryptedData"></div>
+  <div id="decryptedData"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+  <script>
+    const socket = io('http://localhost:3001');
+
+    socket.on('encryptedData', (data) => {
+      console.log('Encrypted Data:', data);
+      document.getElementById('encryptedData').innerHTML = `Encrypted Data: ${data.encryptedData}`;
+
+      // Simulate decryption on the frontend (in a real scenario, use a secure method)
+      const decryptedData = 'Decrypted data from frontend';
+      socket.emit('decryptedData', decryptedData);
+    });
+
+    socket.on('savedData', (data) => {
+      console.log('Saved Data:', data);
+      document.getElementById('decryptedData').innerHTML = `Saved Data: ${data.value}`;
+    });
+  </script>
+</body>
+</html>
