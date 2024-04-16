@@ -1,32 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Socket.io Example</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Colleges Table</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Socket.io Example</h1>
-  <div id="encryptedData"></div>
-  <div id="decryptedData"></div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
-  <script>
-    const socket = io('http://localhost:3001');
+<div id="root"></div>
 
-    socket.on('encryptedData', (data) => {
-      console.log('Encrypted Data:', data);
-      document.getElementById('encryptedData').innerHTML = `Encrypted Data: ${data.encryptedData}`;
+<script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@^6.26.0/babel.min.js"></script>
+<script type="text/babel" src="app.js"></script>
 
-      // Simulate decryption on the frontend (in a real scenario, use a secure method)
-      const decryptedData = 'Decrypted data from frontend';
-      socket.emit('decryptedData', decryptedData);
-    });
-
-    socket.on('savedData', (data) => {
-      console.log('Saved Data:', data);
-      document.getElementById('decryptedData').innerHTML = `Saved Data: ${data.value}`;
-    });
-  </script>
 </body>
 </html>
